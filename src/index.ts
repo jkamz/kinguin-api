@@ -5,21 +5,55 @@ const API_URL = {
     sandbox: "https://api.api-sandbox.kinguin.info"
 }
 
+interface IProductFilter {
+    page?: number;
+    limit?: number;
+    name?: string;
+    sortBy?: "price";
+    sortType?: "ASC" | "DESC";
+    priceFrom?: number;
+    priceTo?: number;
+}
+
 class Kinguin {
     axiosInstance: AxiosInstance;
-    constructor(isProd: boolean, version = "v1") {
+    constructor(key: string, isProd: boolean, version = "v1") {
         this.axiosInstance = Axios.create({
-            baseURL: this.createUrl(isProd, version)
+            baseURL: this.createUrl(isProd, version),
+            headers: { 'api-ecommerce-auth': key }
         });
     }
 
-    private createUrl(isProd: boolean, version: string) {
+    createUrl(isProd: boolean, version: string) {
         return (isProd ? API_URL.production : API_URL.sandbox) + "/integration/" + version
     }
+
+    getProductList(filter?: IProductFilter) {
+        return this.axiosInstance.get('/products', { params: filter })
+    }
+
+    getProductDetails() {
+
+    }
+
+    placeOrder() {
+
+    }
+
+    getOrderID() {
+
+    }
+
+    getKey() {
+
+    }
+
+
 }
 
 export default Kinguin
 
 export {
-    Kinguin
+    Kinguin,
+    IProductFilter
 }
