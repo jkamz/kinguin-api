@@ -13,7 +13,7 @@ class Kinguin {
         });
     }
 
-    createUrl(isProd: boolean, version: string) {
+    private createUrl(isProd: boolean, version: string) {
         return (isProd ? API_URL.production : API_URL.sandbox) + "/integration/" + version
     }
 }
