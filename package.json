@@ -1,0 +1,62 @@
+{
+  "name": "kinguin-api",
+  "version": "0.0.1",
+  "description": "Integration for purchasing products on KINGUIN.NET",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "mocha -r ts-node/register src/**/*.spec.ts",
+    "cover": "nyc npm t",
+    "prepublishOnly": "tsc -p ./ --outDir dist/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lfirek/kinguin-api.git"
+  },
+  "keywords": [
+    "kinguin",
+    "integration",
+    "api",
+    "integration",
+    "api"
+  ],
+  "author": "Lukasz Firek <lukasz@minding.pl>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lfirek/kinguin-api/issues"
+  },
+  "homepage": "https://github.com/lfirek/kinguin-api#readme",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "js-sha256": "^0.9.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.2",
+    "@types/mocha": "^2.2.47",
+    "chai": "^4.1.2",
+    "mocha": "^5.0.0",
+    "nyc": "^11.4.1",
+    "ts-node": "^4.1.0",
+    "typescript": "^2.6.2"
+  },
+  "nyc": {
+    "include": [
+      "src/*.ts",
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "typings"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "json",
+      "html"
+    ],
+    "all": true
+  }
+}
