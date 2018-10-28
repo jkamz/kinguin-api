@@ -13,6 +13,10 @@ All requests to KINGUIN API are made by using axios library. In response you are
 
 ## Usage
 
+The best usage example is documentation from kinguin. 
+
+This library just implements available resources and don't wraps responses in any kind.
+
 ### API Connection
 Class constructor accepts two parameters. First parameter is api key and the second is boolean value representing type of connection (prod = true, sandbox = false).
 ```
