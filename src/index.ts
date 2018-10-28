@@ -16,10 +16,10 @@ interface IProductFilter {
 }
 
 interface IProductOrder {
-    kinguinId : number;
-    qty : number;
-    name : string;
-    price : number;
+    kinguinId: number;
+    qty: number;
+    name: string;
+    price: number;
 }
 
 class Kinguin {
@@ -43,18 +43,23 @@ class Kinguin {
         return this.axiosInstance.get('/products/' + kinguinId)
     }
 
-    placeOrder(products : Array<IProductOrder>) {
+    placeOrder(products: Array<IProductOrder>) {
         return this.axiosInstance.post('/order', products);
     }
 
-    getOrderID() {
-
+    getOrderID(orderId: number) {
+        return this.axiosInstance.post('/order/dispatch', {
+            orderId
+        });
     }
 
-    getKey() {
-
+    getKey(dispatchId: number) {
+        return this.axiosInstance.get('/order/dispatch/keys', {
+            params: {
+                dispatchId
+            }
+        })
     }
-
 
 }
 
