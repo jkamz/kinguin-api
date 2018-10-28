@@ -3,6 +3,7 @@ import 'mocha';
 import Kinguin, { IProductFilter } from './index';
 import MockAdapter from 'axios-mock-adapter'
 import getProductListResponse from './__mocks__/getProductListResponse';
+import getProductResponse from './__mocks__/getProductResponse';
 
 describe('Kinguin API', () => {
 
@@ -38,13 +39,13 @@ describe('Kinguin API', () => {
             const mock = new MockAdapter(api.axiosInstance);
             mock.onGet('/products').reply(200, getProductListResponse)
             const filter: IProductFilter = {
-                page : 1,
+                page: 1,
                 limit: 10,
-                name : "Battlefield",
-                sortBy : "price",
-                sortType : "ASC",
-                priceFrom : 10.11,
-                priceTo : 21.37
+                name: "Battlefield",
+                sortBy: "price",
+                sortType: "ASC",
+                priceFrom: 10.11,
+                priceTo: 21.37
             }
             api.getProductList(filter).then((response) => {
                 expect(response.config.headers['api-ecommerce-auth']).equals("test");
@@ -53,6 +54,20 @@ describe('Kinguin API', () => {
             })
         });
 
+    });
+
+    describe('getProductDetails', () => {
+        it('check plain request', (done) => {
+            const api = new Kinguin("test", false, "v1");
+            const mock = new MockAdapter(api.axiosInstance);
+            mock.onGet('/products/15').reply(200, getProductResponse)
+            api.getProductDetails(15).then((response) => {
+                expect(response.config.headers['api-ecommerce-auth']).equals("test");
+                expect(response.data).to.deep.equals(getProductResponse);
+                expect(response.config.url).to.equals('/products/15')
+                done();
+            })
+        });
     });
 
 });

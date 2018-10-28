@@ -15,6 +15,13 @@ interface IProductFilter {
     priceTo?: number;
 }
 
+interface IProductOrder {
+    kinguinId : number;
+    qty : number;
+    name : string;
+    price : number;
+}
+
 class Kinguin {
     axiosInstance: AxiosInstance;
     constructor(key: string, isProd: boolean, version = "v1") {
@@ -32,12 +39,12 @@ class Kinguin {
         return this.axiosInstance.get('/products', { params: filter })
     }
 
-    getProductDetails() {
-
+    getProductDetails(kinguinId: number) {
+        return this.axiosInstance.get('/products/' + kinguinId)
     }
 
-    placeOrder() {
-
+    placeOrder(products : Array<IProductOrder>) {
+        return this.axiosInstance.post('/order', products);
     }
 
     getOrderID() {
