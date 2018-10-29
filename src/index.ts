@@ -44,10 +44,12 @@ class Kinguin {
     }
 
     placeOrder(products: Array<IProductOrder>) {
-        return this.axiosInstance.post('/order', products);
+        return this.axiosInstance.post('/order', {
+            products
+        });
     }
 
-    getOrderID(orderId: number) {
+    getDispatchID(orderId: number) {
         return this.axiosInstance.post('/order/dispatch', {
             orderId
         });
