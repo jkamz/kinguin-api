@@ -6,7 +6,7 @@ KINGUIN integration api using :
 
 ## Informations
 
-This API is create by using offical documentation
+This API is create by using offical documentation (https://www.kinguin.net/integration/)
 
 All requests to KINGUIN API are made by using axios library. In response you are getting Promise and when Promise resolve you are getting Axios object (https://github.com/axios/axios#response-schema)
 
@@ -73,10 +73,10 @@ Products object is array with the items you want to buy.
 ]
 ```
 
-### Get order id
+### Get dispatch id
 
 ```
-api.getOrderID(orderId).then( (response) => {
+api.getDispatchID(orderId).then( (response) => {
     // response is Axios object (response.data is answer from kinguin)
 })
 ```
