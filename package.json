@@ -1,6 +1,6 @@
 {
   "name": "kinguin-api",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Integration for purchasing products on KINGUIN.NET (https://www.kinguin.net/integration/)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
